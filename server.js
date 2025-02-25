@@ -1,5 +1,4 @@
 const express = require("express");
-const client = require("./db");
 
 const app = express();
 
@@ -21,6 +20,20 @@ app.use(function(_, res, next) {
 });
 
 const port = 3000;
+
+const usersRoutes = require("./routes/users");
+const booksRoutes = require("./routes/books");
+const reviewsRoutes = require("./routes/reviews");
+const ratingsRoutes = require("./routes/ratings");
+const favoritesRoutes = require("./routes/favorites");
+const readBooksRoutes = require("./routes/readBooks");
+
+app.use("/users", usersRoutes);
+app.use("/books", booksRoutes);
+app.use("/reviews", reviewsRoutes);
+app.use("/ratings", ratingsRoutes);
+app.use("/favorites", favoritesRoutes);
+app.use("/read-books", readBooksRoutes);
 
 app.listen(port, () => {
     console.log(` My app is listening at http://localhost:${port}`);
