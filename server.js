@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -29,6 +30,7 @@ const ratingsRoutes = require("./routes/ratings");
 const favoritesRoutes = require("./routes/favorites");
 const readBooksRoutes = require("./routes/readBooks");
 
+app.use("/api/auth", authRoutes);
 app.use("/users", usersRoutes);
 app.use("/books", booksRoutes);
 app.use("/reviews", reviewsRoutes);
