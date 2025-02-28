@@ -1,7 +1,7 @@
 const express = require("express");
 const client = require("../db");
 
-const router = express.Router();
+const router = express();
 
 // Get rate for a book
 router.get("/:bookId", async (req, res) => {

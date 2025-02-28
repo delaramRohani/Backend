@@ -1,7 +1,7 @@
 const express = require("express");
 const client = require("../db");
 
-const router = express.Router();
+const router = express();
 
 // Get books reviews
 router.get("/:bookId", async (req, res) => {
