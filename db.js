@@ -1,7 +1,6 @@
 const { Client } = require('pg');
 require('dotenv').config();
 
-// ایجاد اتصال به دیتابیس
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
