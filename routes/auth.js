@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express();
-const { authenticateToken } = require("../middlewares/authMiddleware");
+const { authenticateToken } = require("../middleware/authMiddleware");
 const User = require("./users");
 
 router.get("/me", authenticateToken, async (req, res) => {
