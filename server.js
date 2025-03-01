@@ -29,6 +29,7 @@ const reviewsRoutes = require("./routes/reviews");
 const ratingsRoutes = require("./routes/ratings");
 const favoritesRoutes = require("./routes/favorites");
 const readBooksRoutes = require("./routes/readBooks");
+const userProfile = require("./routes/auth");
 
 app.use("/api/auth", authRoutes);
 app.use("/users", usersRoutes);
@@ -37,6 +38,8 @@ app.use("/reviews", reviewsRoutes);
 app.use("/ratings", ratingsRoutes);
 app.use("/favorites", favoritesRoutes);
 app.use("/read-books", readBooksRoutes);
+app.use("/api/auth", userProfile);
+
 
 app.listen(port, () => {
     console.log(` My app is listening at http://localhost:${port}`);
