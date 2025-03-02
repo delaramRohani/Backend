@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const db = require("../db");
 
+// Sign up user
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -40,7 +41,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-
+// Login user
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
   
@@ -75,6 +76,7 @@ const loginUser = async (req, res) => {
     }
   };
   
+  // Get the user profile
   const getUserProfile = async (req, res) => {
     const token = req.header("Authorization");
     if (!token) return res.status(401).json({ message: "Access denied. No token provided." });
