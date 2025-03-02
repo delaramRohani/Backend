@@ -4,7 +4,7 @@ const client = require("../db");
 const router = express();
 
 // Get rate for a book
-router.get("/rating:bookId", async (req, res) => {
+router.get("/:bookId", async (req, res) => {
   try {
     const { bookId } = req.params;
     const result = await client.query("SELECT AVG(rating) as average_rating FROM ratings WHERE book_id = $1", [bookId]);
@@ -15,7 +15,7 @@ router.get("/rating:bookId", async (req, res) => {
 });
 
 // Add new rating
-router.post("/rating", async (req, res) => {
+router.post("/", async (req, res) => {
   const { userId, bookId, rating } = req.body;
   try {
     const result = await client.query(
