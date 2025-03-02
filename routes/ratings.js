@@ -3,6 +3,18 @@ const client = require("../db");
 
 const router = express();
 
+// User Authentication method
+const authenticateUser = async (req, res) => {
+  try {
+      const user = await authMiddleware(req, res);
+      if (!user) return null;
+      return user;
+  } catch (error) {
+      res.status(401).json({ message: "Unauthorized" });
+      return null;
+  }
+};
+
 // Get rate for a book
 router.get("/:bookId", async (req, res) => {
   try {
@@ -16,7 +28,12 @@ router.get("/:bookId", async (req, res) => {
 
 // Add new rating
 router.post("/", async (req, res) => {
-  const { userId, bookId, rating } = req.body;
+  const user = await authenticateUser(req, res);
+  if (!user) return;
+
+  const { bookId, rating } = req.body;
+  const userId = user.id;
+
   try {
     const result = await client.query(
       "INSERT INTO ratings (user_id, book_id, rating) VALUES ($1, $2, $3) ON CONFLICT (user_id, book_id) DO UPDATE SET rating = $3 RETURNING *",
