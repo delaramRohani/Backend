@@ -4,7 +4,7 @@ const client = require("../db");
 const router = express();
 
 // Get all books
-router.get("/", async (req, res) => {
+router.get("/books", async (req, res) => {
   try {
     const result = await client.query("SELECT * FROM books");
     res.json(result.rows);
@@ -28,7 +28,7 @@ router.get("/search", async (req, res) => {
 });
 
 // Add books (Avoid Duplicates books) 
-router.post("/", async (req, res) => {
+router.post("/books", async (req, res) => {
   const { title, author, category } = req.body;
 
   try {
