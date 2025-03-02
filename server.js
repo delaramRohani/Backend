@@ -26,13 +26,13 @@ const port = 3000;
 const booksRoutes = require("./routes/books");
 const reviewsRoutes = require("./routes/reviews");
 const ratingsRoutes = require("./routes/ratings");
-const userBooks = require("./routes/userBooks");
+const userBooksRoutes = require("./routes/userBooks");
 
 app.use("/api/auth", authRoutes);
 app.use("/books", booksRoutes);
 app.use("/reviews", reviewsRoutes);
 app.use("/ratings", ratingsRoutes);
-app.use("/userBooks", userBooks);
+app.use("/userBooks", userBooksRoutes);
 
 
 
