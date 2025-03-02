@@ -34,9 +34,6 @@ app.use("/reviews", reviewsRoutes);
 app.use("/ratings", ratingsRoutes);
 app.use("/userBooks", userBooksRoutes);
 
-
-
 app.listen(port, () => {
-    console.log(` My app is listening at http://localhost:${port}`);
-  });
-  
+  console.log(` My app is listening at http://localhost:${port}`);
+});

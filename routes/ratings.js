@@ -6,12 +6,12 @@ const router = express();
 // User Authentication method
 const authenticateUser = async (req, res) => {
   try {
-      const user = await authMiddleware(req, res);
-      if (!user) return null;
-      return user;
+    const user = await authMiddleware(req, res);
+    if (!user) return null;
+    return user;
   } catch (error) {
-      res.status(401).json({ message: "Unauthorized" });
-      return null;
+    res.status(401).json({ message: "Unauthorized" });
+    return null;
   }
 };
 
@@ -19,7 +19,10 @@ const authenticateUser = async (req, res) => {
 router.get("/:bookId", async (req, res) => {
   try {
     const { bookId } = req.params;
-    const result = await client.query("SELECT AVG(rating) as average_rating FROM ratings WHERE book_id = $1", [bookId]);
+    const result = await client.query(
+      "SELECT AVG(rating) as average_rating FROM ratings WHERE book_id = $1",
+      [bookId]
+    );
     res.json(result.rows[0]);
   } catch (err) {
     res.status(500).json({ error: "Server error" });
