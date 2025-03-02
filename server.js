@@ -26,15 +26,14 @@ const port = 3000;
 const booksRoutes = require("./routes/books");
 const reviewsRoutes = require("./routes/reviews");
 const ratingsRoutes = require("./routes/ratings");
-const favoritesRoutes = require("./routes/favorites");
-const readBooksRoutes = require("./routes/readBooks");
+const userBooks = require("./routes/userBooks");
 
 app.use("/api/auth", authRoutes);
 app.use("/books", booksRoutes);
 app.use("/reviews", reviewsRoutes);
 app.use("/ratings", ratingsRoutes);
-app.use("/favorites", favoritesRoutes);
-app.use("/read-books", readBooksRoutes);
+app.use("/userBooks", userBooks);
+
 
 
 app.listen(port, () => {
